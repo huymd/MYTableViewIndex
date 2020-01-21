@@ -103,12 +103,12 @@ public class TableViewIndexController : NSObject {
             
             UIView.animate(withDuration: duration, animations: {
                 UIView.setAnimationCurve(UIView.AnimationCurve(rawValue: curve)!)
-
+                
                 self.layout(with: inset)
                 parentView.layoutIfNeeded()
                 
-                }, completion: { _ in
-                    self.layout()
+            }, completion: { _ in
+                self.layout()
             })
         }
     }

@@ -301,6 +301,7 @@ open class TableViewIndex : UIControl {
             finalizeTouch()
         }
         super.touchesEnded(touches, with: event)
+        self.delegate?.finishScrollTableViewIndex?(self)
     }
     
     override open func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -308,6 +309,7 @@ open class TableViewIndex : UIControl {
             finalizeTouch()
         }
         super.touchesCancelled(touches, with: event)
+        self.delegate?.finishScrollTableViewIndex?(self)
     }
     
     private func beginTouch(_ touch: UITouch) {
@@ -426,6 +428,7 @@ public protocol TableViewIndexDelegate : NSObjectProtocol {
     /// Return true to produce a haptic feedback (iPhone 7 with iOS 10 or later).
     @objc(tableViewIndex:didSelectItem:atIndex:)
     optional func tableViewIndex(_ tableViewIndex: TableViewIndex, didSelect item: UIView, at index: Int) -> Bool
+    @objc optional func finishScrollTableViewIndex(_ tableViewIndex: TableViewIndex)
 }
 
 // MARK: - IB support
